@@ -16,10 +16,10 @@ func (r *JenkinsBaseConfigurationReconciler) compareContainers(expected corev1.C
 		messages = append(messages, "Command has changed")
 		verbose = append(verbose, fmt.Sprintf("Command has changed to '%+v' in container '%s'", expected.Command, expected.Name))
 	}
-	if !compareEnv(expected.Env, actual.Env) {
-		messages = append(messages, "Env has changed")
-		verbose = append(verbose, fmt.Sprintf("Env has changed to '%+v' in container '%s'", expected.Env, expected.Name))
-	}
+	// if !compareEnv(expected.Env, actual.Env) {
+	// 	messages = append(messages, "Env has changed")
+	// 	verbose = append(verbose, fmt.Sprintf("Env has changed to '%+v' in container '%s'", expected.Env, expected.Name))
+	// }
 	if !reflect.DeepEqual(expected.EnvFrom, actual.EnvFrom) {
 		messages = append(messages, "EnvFrom has changed")
 		verbose = append(verbose, fmt.Sprintf("EnvFrom has changed to '%+v' in container '%s'", expected.EnvFrom, expected.Name))
@@ -60,10 +60,10 @@ func (r *JenkinsBaseConfigurationReconciler) compareContainers(expected corev1.C
 		messages = append(messages, "Working directory has changed")
 		verbose = append(verbose, fmt.Sprintf("Working directory has changed to '%+v' in container '%s'", expected.WorkingDir, expected.Name))
 	}
-	if !CompareContainerVolumeMounts(expected, actual) {
-		messages = append(messages, "Volume mounts have changed")
-		verbose = append(verbose, fmt.Sprintf("Volume mounts have changed to '%+v' in container '%s'", expected.VolumeMounts, expected.Name))
-	}
+	// if !CompareContainerVolumeMounts(expected, actual) {
+	// 	messages = append(messages, "Volume mounts have changed")
+	// 	verbose = append(verbose, fmt.Sprintf("Volume mounts have changed to '%+v' in container '%s'", expected.VolumeMounts, expected.Name))
+	// }
 	return messages, verbose
 }
 
