@@ -94,11 +94,11 @@ func (r *JenkinsBaseConfigurationReconciler) checkForPodRecreation(currentJenkin
 			currentJenkinsMasterPod.Spec.Volumes, r.Configuration.Jenkins.Spec.Master.Volumes))
 	}
 
-	if len(r.Configuration.Jenkins.Spec.Master.Containers) != len(currentJenkinsMasterPod.Spec.Containers) {
-		messages = append(messages, "Jenkins amount of containers has changed")
-		verbose = append(verbose, fmt.Sprintf("Jenkins amount of containers has changed, actual '%+v' required '%+v'",
-			len(currentJenkinsMasterPod.Spec.Containers), len(r.Configuration.Jenkins.Spec.Master.Containers)))
-	}
+	// if len(r.Configuration.Jenkins.Spec.Master.Containers) != len(currentJenkinsMasterPod.Spec.Containers) {
+	// 	messages = append(messages, "Jenkins amount of containers has changed")
+	// 	verbose = append(verbose, fmt.Sprintf("Jenkins amount of containers has changed, actual '%+v' required '%+v'",
+	// 		len(currentJenkinsMasterPod.Spec.Containers), len(r.Configuration.Jenkins.Spec.Master.Containers)))
+	// }
 
 	if r.Configuration.Jenkins.Spec.Master.PriorityClassName != currentJenkinsMasterPod.Spec.PriorityClassName {
 		messages = append(messages, "Jenkins priorityClassName has changed")
